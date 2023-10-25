@@ -5,6 +5,15 @@ def encode(password):
         encoded += str((int(password[i]) + 3) % 10)
     return encoded
 
+
+def decode(code):
+    decoded_password = ""  # creates empty string to hold decoded password
+    for i in code:  # iterates through code
+        decoded_digit = (int(i) - 3) % 10  # subtracts 3 from each digit
+        decoded_password += str(decoded_digit)  # adds decoded digit to string
+    return decoded_password  # returns decoded password
+
+
 if __name__ == '__main__':
     password_original = None
     password_encoded = None
@@ -24,7 +33,8 @@ if __name__ == '__main__':
             continue
 
         if option == 2:
-            print(f"The encoded password is {password_encoded}, and the original password is {password_original}.")
+            password_decoded = decode(password_encoded)
+            print(f"The encoded password is {password_encoded}, and the original password is {password_decoded}.")
             continue
 
         if option == 3:
